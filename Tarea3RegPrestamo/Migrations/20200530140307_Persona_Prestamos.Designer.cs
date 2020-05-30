@@ -9,8 +9,8 @@ using Tarea3RegPrestamo.DAL;
 namespace Tarea3RegPrestamo.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200529022850_PrestamoPersona")]
-    partial class PrestamoPersona
+    [Migration("20200530140307_Persona_Prestamos")]
+    partial class Persona_Prestamos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,7 +44,8 @@ namespace Tarea3RegPrestamo.Migrations
 
                     b.Property<string>("Telofono")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(10);
 
                     b.HasKey("PersonaId");
 

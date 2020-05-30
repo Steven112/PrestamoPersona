@@ -42,7 +42,8 @@ namespace Tarea3RegPrestamo.Migrations
 
                     b.Property<string>("Telofono")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(10);
 
                     b.HasKey("PersonaId");
 

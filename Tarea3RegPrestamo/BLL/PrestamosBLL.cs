@@ -53,6 +53,17 @@ namespace Tarea3RegPrestamo.BLL
 
             try
             {
+                var persona = PersonaBLL.Buscar(prestamos.PersonaId);
+                var anterior = Buscar(prestamos.PrestamoId);
+
+                persona.Balance -= anterior.Monto;
+                contexto.prestamos.Add(prestamos);
+
+                persona.Balance += prestamos.Monto;
+                PersonaBLL.Modificar(persona);
+
+                prestamos.Balances = 1000;
+
                 contexto.Entry(prestamos).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
@@ -70,12 +81,14 @@ namespace Tarea3RegPrestamo.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
+            Prestamos prestamos = new Prestamos();
             try
             {
                 var prestam = contexto.prestamos.Find(id);
 
                 if (prestam != null)
                 {
+                    contexto.personas.Find(prestam.PersonaId).Balance -= prestam.Monto;
                     contexto.prestamos.Remove(prestam);
                     paso = contexto.SaveChanges() > 0;
                 }

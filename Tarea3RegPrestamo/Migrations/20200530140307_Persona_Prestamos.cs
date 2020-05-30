@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tarea3RegPrestamo.Migrations
 {
-    public partial class PrestamoPersona : Migration
+    public partial class Persona_Prestamos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace Tarea3RegPrestamo.Migrations
                     PersonaId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Normbre = table.Column<string>(nullable: false),
-                    Telofono = table.Column<string>(nullable: false),
+                    Telofono = table.Column<string>(maxLength: 10, nullable: false),
                     Cedula = table.Column<string>(nullable: false),
                     Direccion = table.Column<string>(nullable: false),
                     FechaNacimiento = table.Column<DateTime>(nullable: false),

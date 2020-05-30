@@ -4,87 +4,88 @@
 @using Tarea3RegPrestamo.BLL
 @inject IToastService toast
 
-<EditForm Model="persona" OnValidSubmit="Guardar">
-    <DataAnnotationsValidator/>
-    <div class="card">
-        <div class="card-header">
-            <h3> Registro Personas</h3>
-        </div>
-        <div class="card-body">
-            <form>
-                @*PersonaId*@
-                <div class="form-row align-items-center">
-                    <div class="col">
-                        <div class="form-group">
-                            <label>PersonaId</label>
-                            <div class=" input-group">
-                                <InputNumber @bind-Value="persona.PersonaId" class="form-control col-4" />
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-primary input-group-text" @onclick="Buscar">Buscar</button>
+    <EditForm Model="persona" OnValidSubmit="Guardar">
+        <DataAnnotationsValidator />
+        <div class="card">
+            <div class="card-header">
+                <h3> Registro Personas</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    @*PersonaId*@
+                    <div class="form-row align-items-center">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>PersonaId</label>
+                                <div class=" input-group">
+                                    <InputNumber @bind-Value="persona.PersonaId" class="form-control col-4" />
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-primary input-group-text" @onclick="Buscar">Buscar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                @*Nombres*@
-                <div class="form-group">
-                    <label>Nombres</label>
-                    <InputText @bind-Value="persona.Normbre" class="form-control " />
-                    <ValidationMessage For="@(()=> persona.Normbre)" />
+                    @*Nombres*@
+                    <div class="form-group">
+                        <label>Nombres</label>
+                        <InputText @bind-Value="persona.Normbre" class="form-control " />
+                        <ValidationMessage For="@(()=> persona.Normbre)" />
 
-                </div>
-                @*Telefono*@
-                <div class="form-group">
-                    <label>Telefono</label>
-                    <InputText @bind-Value="persona.Telofono" class="form-control " />
-                    <ValidationMessage For="@(()=> persona.Telofono)" />
+                    </div>
+                    @*Telefono*@
+                    <div class="form-group">
+                        <label>Telefono</label>
+                        <InputText @bind-Value="persona.Telofono" class="form-control " />
+                        <ValidationMessage For="@(()=> persona.Telofono)" />
 
+                    </div>
+                    @*Cedula*@
+                    <div class="form-group">
+                        <label>Cedula</label>
+                        <InputText @bind-Value="persona.Cedula" class="form-control " />
+                        <ValidationMessage For="@(()=> persona.Cedula)" />
+                    </div>
+                    @*Direccion*@
+                    <div class="form-group">
+                        <label>Dreccion</label>
+                        <InputText @bind-Value="persona.Direccion" class="form-control " />
+                        <ValidationMessage For="@(()=> persona.Direccion)" />
+                    </div>
+                    @*FechaNacimiento*@
+                    <div class="form-group">
+                        <label>Fecha Nacimiento</label>
+                        <InputDate @bind-Value="persona.FechaNacimiento" class="form-control " />
+                        <ValidationMessage For="@(()=> persona.FechaNacimiento)" />
+                    </div>
+                    @*Balance*@
+                    <div class="form-group">
+                        <label>Balance</label>
+                        <InputNumber @bind-Value="persona.Balance" class="form-control" step="any" ReadOnly="true"></InputNumber>
+                        <ValidationMessage For="@(()=> persona.Balance)" />
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="form-group text-center" display: inline-block>
+                    <button type="button" class="btn btn-lg btn-primary" @onclick="Nuevo">Nuevo</button>
+                    <button type="submit" class="btn btn-lg btn-success">Guardar</button>
+                    <button type="button" class="btn btn-lg btn-danger" @onclick="Eliminar">Eliminar</button>
                 </div>
-                @*Cedula*@
-                <div class="form-group">
-                    <label>Cedula</label>
-                    <InputText @bind-Value="persona.Cedula" class="form-control " />
-                    <ValidationMessage For="@(()=> persona.Cedula)" />
-                </div>
-                @*Direccion*@
-                <div class="form-group">
-                    <label>Dreccion</label>
-                    <InputText @bind-Value="persona.Direccion" class="form-control " />
-                    <ValidationMessage For="@(()=> persona.Direccion)" />
-                </div>
-                @*FechaNacimiento*@
-                <div class="form-group">
-                    <label>Fecha Nacimiento</label>
-                    <InputDate @bind-Value="persona.FechaNacimiento" class="form-control " />
-                    <ValidationMessage For="@(()=> persona.FechaNacimiento)" />
-                </div>
-                @*Balance*@
-                <div class="form-group">
-                    <label>Balance</label>
-                    <InputNumber @bind-Value="persona.Balance" class="form-control " />
-                    <ValidationMessage For="@(()=> persona.Balance)" />
-                </div>
-            </form>
-        </div>
-        <div class="card-footer">
-            <div class="form-group text-center" display: inline-block>
-                <button type="button" class="btn btn-lg btn-primary" @onclick="Nuevo">Nuevo</button>
-                <button type="submit" class="btn btn-lg btn-success">Guardar</button>
-                <button type="button" class="btn btn-lg btn-danger" @onclick="Eliminar">Eliminar</button>
             </div>
         </div>
-    </div>
-</EditForm>
+    </EditForm>
 
 @code {
     [Parameter]
     public int PersonaId { get; set; }
-    private Persona persona = new Persona();
+    Persona persona = new Persona();
 
     protected override void OnInitialized()
     {
         Nuevo();
+        Buscar();
     }
     public void Nuevo()
     {
@@ -92,24 +93,34 @@
     }
 
 
-    private void Buscar()
+    public void Buscar()
     {
+
+
         if (persona.PersonaId > 0)
         {
-            var encontrado =PersonaBLL.Buscar(persona.PersonaId);
+            var encontrado = PersonaBLL.Buscar(persona.PersonaId);
 
             if (encontrado != null)
+            {
                 this.persona = encontrado;
-            else
-                toast.ShowError("No encontrado");
+            }
+
         }
+        else
+        {
+            this.persona = new Persona();
+        }
+
+
+
     }
 
     public void Guardar()
     {
         bool guardo;
 
-        guardo =PersonaBLL.Guardar(persona);
+        guardo = PersonaBLL.Guardar(persona);
 
         if (guardo)
         {
@@ -134,6 +145,5 @@
         else
             toast.ShowError("No fue posible eliminar");
     }
-
 
 }
