@@ -23,7 +23,8 @@ namespace Tarea3RegPrestamo.BLL
             Persona persona = new Persona();
             bool paso = false;
             Contexto contexto = new Contexto();
-
+            Mora mora = new Mora();
+            MoraDetalle moraDetalle = new MoraDetalle();
             try
             {
 

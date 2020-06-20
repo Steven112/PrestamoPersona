@@ -18,7 +18,7 @@ namespace Tarea3RegPrestamo.Models
         public string Normbre { get; set; }
 
         [Required(ErrorMessage = "Es obligatorio llenar este campo")]
-        [MaxLength(10, ErrorMessage = "El campo telefono debe tener más de diez numeros")]
+        [MaxLength(12, ErrorMessage = "El campo telefono debe tener más de diez numeros")]
         [MinLength(6, ErrorMessage = "El telefono es muy corto")]
         public string Telofono { get; set; }
 

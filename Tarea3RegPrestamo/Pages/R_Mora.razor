@@ -138,6 +138,7 @@
         {
             PrestamoId = Convert.ToInt32(prestamoSeleccionado),
             Valor = moraDetalle.Valor
+
         });
 
     }
@@ -204,11 +205,11 @@
 
     public void TotalMora()
     {
-        var totales = 0;
+        mora.Total = Convert.ToInt32(0);
         foreach (var item in mora.moradetalles)
         {
-            totales += Convert.ToInt32(moraDetalle.Valor);
+            mora.Total+=Convert.ToInt32(item.Valor);
         }
-        mora.Total = totales;
+
     }
 }

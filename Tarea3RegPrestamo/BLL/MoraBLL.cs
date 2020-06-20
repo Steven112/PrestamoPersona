@@ -27,11 +27,10 @@ namespace Tarea3RegPrestamo.BLL
             MoraDetalle moraDetalle = new MoraDetalle();
             try
             {
+
                 contexto.moras.Add(mora);
-                
-                    
-                
                 paso = contexto.SaveChanges() > 0;
+
             }
             catch (Exception)
             {
