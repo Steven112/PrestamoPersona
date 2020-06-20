@@ -11,6 +11,8 @@ namespace Tarea3RegPrestamo.DAL
     {
         public DbSet<Persona> personas { get; set; }
         public DbSet<Prestamos> prestamos { get; set; }
+        public DbSet<Mora> moras { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
