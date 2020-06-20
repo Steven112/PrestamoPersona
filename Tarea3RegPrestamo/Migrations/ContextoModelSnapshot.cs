@@ -87,11 +87,23 @@ namespace Tarea3RegPrestamo.Migrations
                     b.Property<string>("Telofono")
                         .IsRequired()
                         .HasColumnType("TEXT")
-                        .HasMaxLength(10);
+                        .HasMaxLength(12);
 
                     b.HasKey("PersonaId");
 
                     b.ToTable("personas");
+
+                    b.HasData(
+                        new
+                        {
+                            PersonaId = 1,
+                            Balance = 10m,
+                            Cedula = "789-9632598-1",
+                            Direccion = "C/ Maximo Gomez, Casa#3",
+                            FechaNacimiento = new DateTime(2020, 6, 20, 9, 15, 53, 879, DateTimeKind.Local).AddTicks(5321),
+                            Normbre = "Steven Caceres",
+                            Telofono = "829-635-5478"
+                        });
                 });
 
             modelBuilder.Entity("Tarea3RegPrestamo.Models.Prestamos", b =>
@@ -119,6 +131,17 @@ namespace Tarea3RegPrestamo.Migrations
                     b.HasKey("PrestamoId");
 
                     b.ToTable("prestamos");
+
+                    b.HasData(
+                        new
+                        {
+                            PrestamoId = 1,
+                            Balances = 0m,
+                            Concepto = "Compra de carro",
+                            FechaPrestamo = new DateTime(2020, 6, 20, 9, 15, 53, 881, DateTimeKind.Local).AddTicks(7443),
+                            Monto = 10m,
+                            PersonaId = 1
+                        });
                 });
 
             modelBuilder.Entity("Tarea3RegPrestamo.Models.MoraDetalle", b =>

@@ -28,8 +28,17 @@ namespace Tarea3RegPrestamo.BLL
             try
             {
 
-                contexto.moras.Add(mora);
-                paso = contexto.SaveChanges() > 0;
+                foreach(var item in mora.moradetalles)
+                {
+                    var prestamo = contexto.prestamos.Find(item.PrestamoId);
+                    if (prestamo != null)
+                    {
+                        prestamo.Monto += item.Valor;
+                        contexto.personas.Find(prestamo.PersonaId).Balance += item.Valor;
+                    }
+                    contexto.moras.Add(mora);
+                    paso = contexto.SaveChanges() > 0;
+                }
 
             }
             catch (Exception)
@@ -47,16 +56,48 @@ namespace Tarea3RegPrestamo.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-
+            var anterior = Buscar(mora.MoraId);
             try
             {
-                contexto.Database.ExecuteSqlRaw($"Delete FROM MoraDetalle Where MoraId = {mora.MoraId}");
+                
+                foreach (var item in anterior.moradetalles)
+                {
+                    var aux = contexto.prestamos.Find(item.PrestamoId);
+                    if(!mora.moradetalles.Exists(d => d.MoraId == item.MoraId))
+                    {
+                        if (aux != null)
+                        {
+                            aux.Monto -= item.Valor;
+                            contexto.personas.Find(aux.PersonaId).Balance -= item.Valor;
+                        }
+
+                        contexto.Entry(item).State = EntityState.Deleted;
+                    }
+                }
                 foreach (var item in mora.moradetalles)
                 {
-                    contexto.Entry(item).State = EntityState.Added;
+
+                    var aux = contexto.prestamos.Find(item.PrestamoId);
+                    if (item.MoraId==0)
+                    {
+                        contexto.Entry(item).State = EntityState.Added;
+                        if (aux != null)
+                        {
+                            aux.Monto += item.Valor;
+                            contexto.personas.Find(aux.PersonaId).Balance += item.Valor;
+                        }
+
+                    }
+                    else
+                    
+                        contexto.Entry(item).State = EntityState.Modified;
+                    
+
+                   
                 }
                 contexto.Entry(mora).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
+
             }
             catch (Exception)
             {
