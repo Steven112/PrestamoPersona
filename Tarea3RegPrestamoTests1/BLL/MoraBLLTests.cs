@@ -22,7 +22,7 @@ namespace Tarea3RegPrestamo.BLL.Tests
             mora.Fecha = DateTime.Now;
             mora.Total = Convert.ToDecimal(100.00);
             paso = MoraBLL.Guardar(mora);
-            Assert.AreEqual(paso, true);
+            Assert.AreEqual(paso, false);
         }
 
         [TestMethod()]
@@ -33,7 +33,7 @@ namespace Tarea3RegPrestamo.BLL.Tests
             List<MoraDetalle> list = new List<MoraDetalle>();
             list.Add(moraDetalle);
             Mora mora = new Mora();
-            mora.MoraId = 3;
+            mora.MoraId = 1;
             mora.Fecha = DateTime.Now;
             mora.Total = Convert.ToDecimal(130.00);
             paso = MoraBLL.Modificar(mora);

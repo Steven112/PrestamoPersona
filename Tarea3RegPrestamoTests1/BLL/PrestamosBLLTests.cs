@@ -63,7 +63,7 @@ namespace Tarea3RegPrestamo.BLL.Tests
         public void GetPrestamosTest()
         {
             List<Prestamos> lista = new List<Prestamos>();
-            lista = PrestamosBLL.GetEstudiante();
+            lista = PrestamosBLL.GetPrestamos();
             Assert.IsNotNull(lista);
         }
     }

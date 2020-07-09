@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tarea3RegPrestamo.Migrations
 {
-    public partial class Detalles : Migration
+    public partial class APO : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -87,12 +87,17 @@ namespace Tarea3RegPrestamo.Migrations
             migrationBuilder.InsertData(
                 table: "personas",
                 columns: new[] { "PersonaId", "Balance", "Cedula", "Direccion", "FechaNacimiento", "Normbre", "Telofono" },
-                values: new object[] { 1, 10m, "789-9632598-1", "C/ Maximo Gomez, Casa#3", new DateTime(2020, 6, 20, 9, 15, 53, 879, DateTimeKind.Local).AddTicks(5321), "Steven Caceres", "829-635-5478" });
+                values: new object[] { 1, 10m, "789-9632598-1", "C/ Maximo Gomez, Casa#3", new DateTime(2020, 7, 1, 22, 3, 37, 928, DateTimeKind.Local).AddTicks(4406), "Steven Caceres", "829-635-5478" });
+
+            migrationBuilder.InsertData(
+                table: "personas",
+                columns: new[] { "PersonaId", "Balance", "Cedula", "Direccion", "FechaNacimiento", "Normbre", "Telofono" },
+                values: new object[] { 10, 10m, "789-9632598-1", "C/ Maximo Gomez, Casa#3", new DateTime(2020, 7, 1, 22, 3, 37, 930, DateTimeKind.Local).AddTicks(4110), "Steven Nunez", "829-635-5478" });
 
             migrationBuilder.InsertData(
                 table: "prestamos",
                 columns: new[] { "PrestamoId", "Balances", "Concepto", "FechaPrestamo", "Monto", "PersonaId" },
-                values: new object[] { 1, 0m, "Compra de carro", new DateTime(2020, 6, 20, 9, 15, 53, 881, DateTimeKind.Local).AddTicks(7443), 10m, 1 });
+                values: new object[] { 1, 15m, "Terreno", new DateTime(2020, 7, 1, 22, 3, 37, 930, DateTimeKind.Local).AddTicks(7263), 15m, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_MoraDetalle_MoraId",

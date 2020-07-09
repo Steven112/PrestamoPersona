@@ -167,7 +167,7 @@ namespace Tarea3RegPrestamo.BLL
             return encontrado;
         }
 
-        public static List<Prestamos> GetEstudiante()
+        public static List<Prestamos> GetPrestamos()
         {
             List<Prestamos> lista = new List<Prestamos>();
             Contexto contexto = new Contexto();

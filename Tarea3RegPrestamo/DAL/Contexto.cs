@@ -16,7 +16,7 @@ namespace Tarea3RegPrestamo.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source= Data\TeacherControl.db");
+            optionsBuilder.UseSqlite(@"Data Source= C:\Users\stive\OneDrive\Escritorio\BD\APO.db");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,12 +31,24 @@ namespace Tarea3RegPrestamo.DAL
                 Balance=10
 
             });
+
+            modelBuilder.Entity<Persona>().HasData(new Persona
+            {
+                PersonaId = 10,
+                Normbre = "Steven Nunez",
+                Cedula = "789-9632598-1",
+                Telofono = "829-635-5478",
+                Direccion = "C/ Maximo Gomez, Casa#3",
+                FechaNacimiento = DateTime.Now,
+                Balance = 10
+
+            });
             modelBuilder.Entity<Prestamos>().HasData(new Prestamos
             {
                 PrestamoId = 1,
                 PersonaId = 1,
-                Concepto="Compra de carro",
-                Monto=10,
+                Concepto="Terreno",
+                Monto=15,
 
             });
 

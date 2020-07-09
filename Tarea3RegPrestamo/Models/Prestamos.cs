@@ -9,7 +9,6 @@ namespace Tarea3RegPrestamo.Models
     public class Prestamos
     {
         [Key]
-
         [Required(ErrorMessage = "El campo ID no puede estar vacío.")]
         [Range(0, 999999, ErrorMessage = "Prestamo Id no puede ser menor que cero o mayor a 999999")]
         public int PrestamoId { get; set; }
@@ -36,7 +35,7 @@ namespace Tarea3RegPrestamo.Models
             PersonaId = 0;
             Concepto = string.Empty;
             Monto = 0;
-            Balances = 0;
+            Balances = 15;
         }
 
         public Prestamos(int prestamoId, DateTime fechaPrestamo, int personaId, string concepto, decimal monto, decimal balances)

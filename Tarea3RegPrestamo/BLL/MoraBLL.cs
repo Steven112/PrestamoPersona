@@ -13,6 +13,7 @@ namespace Tarea3RegPrestamo.BLL
     {
         public static bool Guardar(Mora mora)
         {
+
             if (!Existe(mora.MoraId))
                 return Insertar(mora);
             else
