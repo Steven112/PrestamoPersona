@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Tarea3RegPrestamo.BLL;
-using Tarea3RegPrestamo.DAL;
 using Tarea3RegPrestamo.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,36 +12,35 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PrestamosController : ControllerBase
+    public class PersonaController : ControllerBase
     {
-        // GET: api/<PrestamosController>
+        // GET: api/<PersonaController>
         [HttpGet]
-        public ActionResult<List<Prestamos>> Get()
+        public ActionResult<List<Persona>> Get()
         {
-            return PrestamosBLL.GetPrestamos();
+            return PersonaBLL.GetPersona();
         }
 
-        // GET api/<PrestamosController>/5
+        // GET api/<PersonaController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult<List<Persona>> Get(int id)
         {
-            return "value";
+            return PersonaBLL.GetPersona();
         }
 
-        // POST api/<PrestamosController>
+        // POST api/<PersonaController>
         [HttpPost]
-        public void Post([FromBody] Prestamos prestamos)
+        public void Post([FromBody] Persona persona)
         {
-            PrestamosBLL.Guardar(prestamos);
+            PersonaBLL.Guardar(persona);
         }
 
-      
-
-        // DELETE api/<PrestamosController>/5
+       
+        // DELETE api/<PersonaController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            PrestamosBLL.Eliminar(id);
+            PersonaBLL.Eliminar(id);
         }
     }
 }
