@@ -16,7 +16,7 @@ namespace Tarea3RegPrestamo.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source= C:\Users\stive\OneDrive\Escritorio\BD\APO.db");
+            optionsBuilder.UseSqlite(@"Data Source= C:\Users\stive\OneDrive\Escritorio\BD\API1W.db");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

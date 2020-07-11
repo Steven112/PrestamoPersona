@@ -100,7 +100,7 @@ namespace Tarea3RegPrestamo.Migrations
                             Balance = 10m,
                             Cedula = "789-9632598-1",
                             Direccion = "C/ Maximo Gomez, Casa#3",
-                            FechaNacimiento = new DateTime(2020, 7, 1, 22, 3, 37, 928, DateTimeKind.Local).AddTicks(4406),
+                            FechaNacimiento = new DateTime(2020, 7, 11, 12, 17, 30, 348, DateTimeKind.Local).AddTicks(2956),
                             Normbre = "Steven Caceres",
                             Telofono = "829-635-5478"
                         },
@@ -110,7 +110,7 @@ namespace Tarea3RegPrestamo.Migrations
                             Balance = 10m,
                             Cedula = "789-9632598-1",
                             Direccion = "C/ Maximo Gomez, Casa#3",
-                            FechaNacimiento = new DateTime(2020, 7, 1, 22, 3, 37, 930, DateTimeKind.Local).AddTicks(4110),
+                            FechaNacimiento = new DateTime(2020, 7, 11, 12, 17, 30, 351, DateTimeKind.Local).AddTicks(2397),
                             Normbre = "Steven Nunez",
                             Telofono = "829-635-5478"
                         });
@@ -148,7 +148,7 @@ namespace Tarea3RegPrestamo.Migrations
                             PrestamoId = 1,
                             Balances = 15m,
                             Concepto = "Terreno",
-                            FechaPrestamo = new DateTime(2020, 7, 1, 22, 3, 37, 930, DateTimeKind.Local).AddTicks(7263),
+                            FechaPrestamo = new DateTime(2020, 7, 11, 12, 17, 30, 351, DateTimeKind.Local).AddTicks(6199),
                             Monto = 15m,
                             PersonaId = 1
                         });
